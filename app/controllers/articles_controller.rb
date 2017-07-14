@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
-	http_basic_authenticate_with name: "raga", password: "secret", except: [:index, :show]
+	#http_basic_authenticate_with name: "raga", password: "secret", except: [:index, :show]
+
+	#devise auth
+	before_action	:authenticate_user!
 
 	def index
 		@articles = Article.all

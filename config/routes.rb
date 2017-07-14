@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  #devise_for :users,  controllers: { registrations: 'users/registrations' }
   #get 'welcome/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -10,4 +12,6 @@ Rails.application.routes.draw do
 
   #set home page
   root	'articles#index'
+
+  root to: 'home#index'
 end
