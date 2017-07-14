@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+	
+	http_basic_authenticate_with name: "raga", password: "secret", only: :destroy
+	
 	def create
 		find_article
 		@comment = @article.comments.create(comment_params)
@@ -8,7 +11,7 @@ class CommentsController < ApplicationController
 	def destroy
 		find_article
 		@comment = @article.comments.find(params[:id])
-		@comments.destroy
+		@comment.destroy
 		redirect_to article_path(@article)
 	end
 
